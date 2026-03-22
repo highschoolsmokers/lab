@@ -248,7 +248,7 @@ export async function renderResume(profile: Profile): Promise<Buffer> {
 
     if (profile.earlier_experience.length > 0 && ry < FLOOR_Y) {
       doc.font("Helvetica-Bold").fontSize(SZ_BODY).fillColor(BLACK);
-      doc.text("Earlier Experience", C2, ry, { lineBreak: false });
+      doc.text("Previous Experience", C2, ry, { lineBreak: false });
       ry += 12;
 
       for (const ee of profile.earlier_experience) {
@@ -265,16 +265,14 @@ export async function renderResume(profile: Profile): Promise<Buffer> {
 
         let etop = top;
         doc.font("Helvetica-Bold").fontSize(SZ_BODY).fillColor(BLACK);
-        for (const ln of wrapLines(doc, ee.title, "Helvetica-Bold", C3_W)) {
+        doc.font("Helvetica").fontSize(SZ_BODY).fillColor(BLACK);
+        for (const ln of wrapLines(doc, ee.title, "Helvetica", C3_W)) {
           doc.text(ln, C3, etop, { lineBreak: false });
           etop += 11;
         }
         ry += 8;
       }
     }
-
-    // ── FOOTER ────────────────────────────────────────────────────────
-    hrule(doc, C1, H - PAD - 22, W - PAD * 2, 3, "#333333");
 
     doc.end();
   });

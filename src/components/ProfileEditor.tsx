@@ -96,9 +96,10 @@ export default function ProfileEditor() {
     const blob = await res.blob();
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    const first = profile.name.first.replace(/\./g, "").replace(/ /g, "_");
-    const last = profile.name.last.replace(/ /g, "_");
-    a.download = `${first}_${last}_resume.pdf`;
+    const first = profile.name.first.replace(/\./g, "").replace(/ /g, "-").toLowerCase();
+    const last = profile.name.last.replace(/ /g, "-").toLowerCase();
+    const pName = profileName.trim() || "profile";
+    a.download = `${first}-${last}-${pName}-resume.pdf`;
     a.click();
     URL.revokeObjectURL(a.href);
     setStatus("PDF downloaded");
@@ -307,8 +308,8 @@ export default function ProfileEditor() {
           ))}
         </Section>
 
-        {/* Earlier Experience */}
-        <Section title="Earlier Experience" onAdd={() => setProfile((p) => ({ ...p, earlier_experience: [...p.earlier_experience, emptyEarlier()] }))}>
+        {/* Previous Experience */}
+        <Section title="Previous Experience" onAdd={() => setProfile((p) => ({ ...p, earlier_experience: [...p.earlier_experience, emptyEarlier()] }))}>
           {profile.earlier_experience.map((ee, i) => (
             <Entry key={i} onRemove={() => removeItem("earlier_experience", i)}>
               <div className="grid grid-cols-3 gap-3">
