@@ -44,7 +44,7 @@ export default function ProfileEditor() {
   const [status, setStatus] = useState("");
 
   const refreshList = useCallback(async () => {
-    const res = await fetch("/api/profiles");
+    const res = await fetch("/resume-lab/api/profiles");
     const names = await res.json();
     setProfiles(names);
   }, []);
@@ -55,7 +55,7 @@ export default function ProfileEditor() {
 
   const loadProfile = async () => {
     if (!selectedProfile) return;
-    const res = await fetch(`/api/profiles/${selectedProfile}`);
+    const res = await fetch(`/resume-lab/api/profiles/${selectedProfile}`);
     if (!res.ok) { setStatus("Profile not found"); return; }
     const data = await res.json();
     setProfile(data);
@@ -66,7 +66,7 @@ export default function ProfileEditor() {
   const saveProfile = async () => {
     const name = profileName.trim();
     if (!name) { setStatus("Enter a profile name first"); return; }
-    const res = await fetch("/api/profiles", {
+    const res = await fetch("/resume-lab/api/profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, data: profile }),
@@ -78,7 +78,7 @@ export default function ProfileEditor() {
   const deleteProfile = async () => {
     const name = profileName.trim();
     if (!name || !confirm(`Delete profile "${name}"?`)) return;
-    await fetch(`/api/profiles/${name}`, { method: "DELETE" });
+    await fetch(`/resume-lab/api/profiles/${name}`, { method: "DELETE" });
     setStatus(`Deleted "${name}"`);
     setProfile(emptyProfile());
     setProfileName("");
@@ -87,7 +87,7 @@ export default function ProfileEditor() {
 
   const downloadPDF = async () => {
     setStatus("Generating PDF...");
-    const res = await fetch("/api/generate", {
+    const res = await fetch("/resume-lab/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
@@ -107,7 +107,7 @@ export default function ProfileEditor() {
 
   const previewPDF = async () => {
     setStatus("Generating preview...");
-    const res = await fetch("/api/generate", {
+    const res = await fetch("/resume-lab/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
