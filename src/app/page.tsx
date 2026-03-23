@@ -2,28 +2,42 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-gray-900 text-white px-6 py-4">
-        <h1 className="text-xl font-semibold">W.S. Gong</h1>
-      </header>
-      <nav className="bg-white border-b px-6 py-3">
-        <ul className="flex gap-6 text-sm">
-          <li>
-            <Link href="/resume-lab" className="text-gray-900 font-medium hover:underline">
-              Resume Lab
+    <div className="min-h-screen bg-[#EDAB00] text-black">
+      <div className="max-w-5xl mx-auto px-8 py-12 md:px-12 md:py-16">
+        {/* Header */}
+        <header className="mb-16">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
+            High School
+            <br />
+            Smokers
+          </h1>
+        </header>
+
+        {/* Projects */}
+        <section className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-12 border-t border-black pt-8">
+          <h2 className="text-xl md:text-2xl font-black leading-tight">
+            Projects
+          </h2>
+          <div className="space-y-6">
+            <Link href="/resume-lab" className="group block">
+              <h3 className="text-lg font-black group-hover:underline">Resume Lab</h3>
+              <p className="text-sm leading-relaxed mt-1">
+                Generate PDF resumes from structured data profiles. Edit
+                contact details, education, experience, and skills through a
+                form interface, then export to a formatted PDF.
+              </p>
             </Link>
-          </li>
-        </ul>
-      </nav>
-      <main className="max-w-3xl mx-auto p-6">
-        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-        <div className="bg-white border rounded-lg p-6">
-          <Link href="/resume-lab" className="block group">
-            <h3 className="text-lg font-semibold group-hover:underline">Resume Lab</h3>
-            <p className="text-sm text-gray-500 mt-1">Generate PDF resumes from data profiles</p>
-          </Link>
-        </div>
-      </main>
+            <Link href="/swiss-style" className="group block border-t border-black pt-6">
+              <h3 className="text-lg font-black group-hover:underline">Swiss Style</h3>
+              <p className="text-sm leading-relaxed mt-1">
+                A page built on the Swiss International Typographic Style grid.
+                Bold sans-serif type, asymmetric layouts, and structured
+                content sections inspired by Die Neue Grafik.
+              </p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
