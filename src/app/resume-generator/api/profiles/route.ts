@@ -11,15 +11,22 @@ export async function GET() {
   const names = fs
     .readdirSync(PROFILES_DIR)
     .filter((f) => f.endsWith(".json"))
-    .map((f) => f.replace(".json", ""))
-    .sort();
+    .map((f) => ({
+      name: f.replace(".json", ""),
+      mtime: fs.statSync(path.join(PROFILES_DIR, f)).mtimeMs,
+    }))
+    .sort((a, b) => a.mtime - b.mtime)
+    .map((f) => f.name);
   return NextResponse.json(names);
 }
 
 export async function POST(request: Request) {
   const { name, data } = await request.json();
   if (!name || !data) {
-    return NextResponse.json({ error: "Missing name or data" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing name or data" },
+      { status: 400 },
+    );
   }
   fs.mkdirSync(PROFILES_DIR, { recursive: true });
   const filePath = path.join(PROFILES_DIR, `${name}.json`);
