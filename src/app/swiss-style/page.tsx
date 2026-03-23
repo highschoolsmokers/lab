@@ -14,12 +14,15 @@ export default function SwissStyle() {
             Design
           </h1>
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-2.5">
+            <a
+              href="/"
+              className="flex items-center gap-2.5 hover:opacity-70 transition-opacity"
+            >
               <div className="w-5 h-5 bg-black" />
               <span className="text-xl font-black tracking-tight">
-                Ruffhaus
+                Laboratory
               </span>
-            </div>
+            </a>
             <ul className="text-sm font-semibold leading-loose">
               <li>The Bauhaus</li>
               <li>Swiss Modernism</li>
@@ -45,18 +48,18 @@ export default function SwissStyle() {
                 fine arts, and was famous for the approach to design that it
                 published and taught. It operated from 1919 to 1933. At that
                 time the German term Bauhaus, literally &ldquo;house of
-                construction&rdquo; stood for &ldquo;School of
-                Building&rdquo;. The Bauhaus school was founded by Walter
-                Gropius in Weimar. In spite of its name, and the fact that its
-                founder was an architect, the Bauhaus did not have an
-                architecture department during the first years of its
-                existence. Nonetheless it was founded with the idea of creating
-                a &lsquo;total&rsquo; work of art in which all arts, including
-                architecture would eventually be brought together.
+                construction&rdquo; stood for &ldquo;School of Building&rdquo;.
+                The Bauhaus school was founded by Walter Gropius in Weimar. In
+                spite of its name, and the fact that its founder was an
+                architect, the Bauhaus did not have an architecture department
+                during the first years of its existence. Nonetheless it was
+                founded with the idea of creating a &lsquo;total&rsquo; work of
+                art in which all arts, including architecture would eventually
+                be brought together.
               </p>
               <p>
-                The Bauhaus style became one of the most influential currents
-                in Modernist architecture and modern design. The Bauhaus had a
+                The Bauhaus style became one of the most influential currents in
+                Modernist architecture and modern design. The Bauhaus had a
                 profound influence upon subsequent developments in art,
                 architecture, graphic design, interior design, industrial
                 design, and typography.
@@ -80,12 +83,12 @@ export default function SwissStyle() {
             <div className="text-sm leading-relaxed space-y-4">
               <p>
                 The International Typographic Style, also known as the Swiss
-                Style, is a graphic design style developed in Switzerland in
-                the 1950s that emphasizes cleanliness, readability and
-                objectivity. Hallmarks of the style are asymmetric layouts, use
-                of a grid, sans-serif typefaces like Akzidenz Grotesk, and
-                flush left, ragged right text. The style is also associated
-                with a preference for photography in place of illustrations or
+                Style, is a graphic design style developed in Switzerland in the
+                1950s that emphasizes cleanliness, readability and objectivity.
+                Hallmarks of the style are asymmetric layouts, use of a grid,
+                sans-serif typefaces like Akzidenz Grotesk, and flush left,
+                ragged right text. The style is also associated with a
+                preference for photography in place of illustrations or
                 drawings. Many of the early International Typographic Style
                 works featured typography as a primary design element in
                 addition to its use in text, and it is for this that the style
@@ -111,9 +114,9 @@ export default function SwissStyle() {
                 graphic designers, who produced their advertising and technical
                 literature. These pioneering graphic artists saw design as part
                 of industrial production and searched for anonymous, objective
-                visual communication. They chose photographic images rather
-                than illustration, and typefaces that were industrial-looking
-                rather than those designed for books.
+                visual communication. They chose photographic images rather than
+                illustration, and typefaces that were industrial-looking rather
+                than those designed for books.
               </p>
             </div>
           </section>
