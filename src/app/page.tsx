@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-[#EBEBEB] text-black">
       <div className="max-w-5xl mx-auto px-8 py-12 md:px-12 md:py-16">
         {/* Header */}
         <header className="mb-16">
