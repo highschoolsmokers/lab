@@ -78,6 +78,11 @@ export default function ProfileEditor() {
     setStatus("");
   };
 
+  const apiHeaders = {
+    "Content-Type": "application/json",
+    "x-api-token": process.env.NEXT_PUBLIC_API_TOKEN || "dev-token",
+  };
+
   const [showSaveAs, setShowSaveAs] = useState(false);
   const [saveAsName, setSaveAsName] = useState("");
 
@@ -85,7 +90,7 @@ export default function ProfileEditor() {
     if (!name.trim()) return;
     const res = await fetch("/resume-generator/api/profiles", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: apiHeaders,
       body: JSON.stringify({ name: name.trim(), data: profile }),
     });
     if (res.ok) {
@@ -101,7 +106,10 @@ export default function ProfileEditor() {
 
   const deleteProfile = async (name: string) => {
     if (!name || !confirm(`Delete "${name}"?`)) return;
-    await fetch(`/resume-generator/api/profiles/${name}`, { method: "DELETE" });
+    await fetch(`/resume-generator/api/profiles/${name}`, {
+      method: "DELETE",
+      headers: apiHeaders,
+    });
     if (profileName === name) {
       setProfile(emptyProfile());
       setProfileName("");
@@ -191,7 +199,11 @@ export default function ProfileEditor() {
     });
   };
 
-  const removeItem = (key: keyof Profile, index: number) => {
+  type ArrayKey = {
+    [K in keyof Profile]: Profile[K] extends unknown[] ? K : never;
+  }[keyof Profile];
+
+  const removeItem = (key: ArrayKey, index: number) => {
     setProfile((p) => {
       const arr = [...(p[key] as unknown[])];
       arr.splice(index, 1);
@@ -239,7 +251,7 @@ export default function ProfileEditor() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black capitalize">
+    <div className="min-h-screen bg-[#EBEBEB] text-black capitalize">
       <div className="max-w-5xl mx-auto px-8 py-12 md:px-12 md:py-16">
         {/* Header */}
         <header className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-12 mb-16">
@@ -262,7 +274,7 @@ export default function ProfileEditor() {
         </header>
 
         {/* Toolbar */}
-        <section className="sticky top-0 z-10 bg-white grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-12 border-t border-black pt-8 pb-10">
+        <section className="sticky top-0 z-10 bg-[#EBEBEB] grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-12 border-t border-black pt-8 pb-10">
           <h2 className="text-xl md:text-2xl font-black leading-tight">
             Profile
           </h2>

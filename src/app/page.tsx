@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#EBEBEB] text-black">
+    <div className="min-h-screen bg-[#F2EDE4] text-black">
       <div className="max-w-5xl mx-auto px-8 py-12 md:px-12 md:py-16">
         {/* Header */}
         <header className="mb-16">
@@ -36,9 +36,9 @@ export default function Home() {
             Design
           </h2>
           <div className="space-y-6">
-            <Link href="/swiss-style" className="group block">
+            <Link href="/die-neue-grafik" className="group block">
               <h3 className="text-lg font-black group-hover:underline">
-                Die Neue Grafik Design
+                Die Neue Grafik
               </h3>
               <p className="text-sm leading-relaxed mt-1">
                 A page built on the Swiss International Typographic Style grid.
